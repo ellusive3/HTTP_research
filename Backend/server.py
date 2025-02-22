@@ -9,6 +9,7 @@ class HTTPHandler(BaseHTTPRequestHandler):
     def do_HEAD(self):
         self.send_response(200)
         self.send_header('Content-type', 'application/json')
+        self.send_header('Cache-Control', 'max-age=200') 
         self.end_headers()
 
     def do_AUTHHEAD(self):
@@ -96,7 +97,7 @@ class CustomHTTPServer(HTTPServer):
 
 
 if __name__ == '__main__':
-    server = CustomHTTPServer(address=("127.0.0.1", 80))
+    server = CustomHTTPServer(address=("127.0.0.1", 8084))
     server.set_auth('user_name', 'password')
     try:
         server.serve_forever()

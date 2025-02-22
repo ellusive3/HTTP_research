@@ -1,7 +1,8 @@
-﻿import requests
+﻿from time import sleep
+import requests
 import base64
 
-url = "http://127.0.0.1:80"
+url = "http://127.0.0.1:8084"
 
 def prepareAuthHeader(username = None, password = None):
     if (username != None or password != None):
@@ -30,6 +31,8 @@ def send_delete(mUrl, username = None, password = None):
 
 send_get(url)
 send_get(url, username = 'user_name1', password = 'password')
+send_get(url, username = 'user_name', password = 'password')
+sleep(2)
 send_get(url, username = 'user_name', password = 'password')
 send_post(url)
 send_post(url, username = 'user_name1', password = 'password')
